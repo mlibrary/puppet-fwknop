@@ -129,4 +129,17 @@ git clone mlibrary/puppet-fwknop.git
 git add .
 git commit
 git push
+# change main branch to production
+
+vi Dockerfile
+mkdir -p .github/workflows
+vi .github/workflows/ci.yml
+git add .
+git commit
+git push
+
+vi .github/dependabot.yml
+git add .
+git commit
+git push
 ```
