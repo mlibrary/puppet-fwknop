@@ -64,11 +64,11 @@ Style/TernaryParentheses:
 Style/TrailingCommaInArguments:
   Description: Prefer always trailing comma on multiline argument lists. This makes
     diffs, and re-ordering nicer.
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: no_comma
 Style/TrailingCommaInArrayLiteral:
   Description: Prefer always trailing comma on multiline literals. This makes diffs,
     and re-ordering nicer.
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: no_comma
 Style/SymbolArray:
   Description: Using percent style obscures symbolic intent of array's contents.
   EnforcedStyle: brackets
