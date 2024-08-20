@@ -7,11 +7,8 @@
 # A description of what this class does
 #
 # @example
-#   include fwknop
-class fwknop {
-  contain fwknop::install
-  contain fwknop::config
-  contain fwknop::service
-
-  Class['fwknop::install'] -> Class['fwknop::config'] ~> Class['fwknop::service']
+#   include fwknop::service
+class fwknop::service {
+  service { 'fwknop-server':
+  }
 }

@@ -3,4 +3,5 @@
 ---
 fixtures:
   forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+    concat: { repo: "puppetlabs/concat", ref: "9.0.2" }
+    stdlib: { repo: "puppetlabs/stdlib", ref: "9.6.0" } # required by concat
