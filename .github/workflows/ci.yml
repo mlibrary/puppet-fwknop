@@ -1,0 +1,21 @@
+name: "Run CI"
+
+on:
+  push:
+    branches: ["production"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        task:
+        - "spec"
+        - "lint"
+        - "rubocop"
+    steps:
+    - uses: actions/checkout@v4
+    - name: "rake ${{ matrix.task }}"
+      run: |
+        docker run --rm `docker build -q .` rake ${{ matrix.task }}
