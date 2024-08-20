@@ -13,6 +13,8 @@ jobs:
         task:
         - "spec"
         - "lint"
+        - "metadata_lint"
+        - "syntax"
         - "rubocop"
     steps:
     - uses: actions/checkout@v4
