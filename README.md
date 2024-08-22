@@ -1,145 +1,56 @@
 # fwknop
 
-Welcome to your new module. A short overview of the generated parts can be found
-in the [PDK documentation][1].
-
-The README template below provides a starting point with details about what
-information to include in your README.
+`TODO` before v1: write all the reference documentation.
 
 ## Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with fwknop](#setup)
-    * [What fwknop affects](#what-fwknop-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with fwknop](#beginning-with-fwknop)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
+2. [Usage - Configuration options and additional functionality](#usage)
+3. [Limitations - OS compatibility, etc.](#limitations)
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your
-module does and what kind of problems users can solve with it.
-
-This should be a fairly short description helps the user decide if your module
-is what they want.
-
-## Setup
-
-### What fwknop affects **OPTIONAL**
-
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
-
-If there's more that they should know about, though, this is the place to
-mention:
-
-* Files, packages, services, or operations that the module will alter, impact,
-  or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section here.
-
-### Beginning with fwknop
-
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most basic
-use of the module.
+Install and manage the configuration for fwknop-server.
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your
-users how to use your module to solve problems, and be sure to include code
-examples. Include three to five examples of the most important or common tasks a
-user can accomplish with your module. Show users how to accomplish more complex
-tasks that involve different types, classes, and functions working in tandem.
+```puppet
+# By default, fwknop will just set PCAP_INTF to the
+# networking.primary fact.
+include fwknop
 
-## Reference
+fwknop::access { 'bob':
+  source                    => 'ANY',
+  open_ports                => 'tcp/22, tcp/993',
+  require_username          => 'bob',
+  require_source_address    => true,
+  fw_access_timeout_seconds => 30,
+  key_base64                => Sensitive('kgohbCga6D5a4YZ0dtbL8SEVbjI1A5KYrRvj0oqcKEk='),
+  hmac_key_base64           => Sensitive('Zig9ZYcqj5gYl2S/UpFNp76RlD7SniyN5Ser5WoIKM7zXS28eptWtLcuxCbnh/9R+MjVfUqmqVHqbEyWtHTj4w=='),
+}
 
-This section is deprecated. Instead, add reference information to your code as
-Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your
-module. For details on how to add code comments and generate documentation with
-Strings, see the [Puppet Strings documentation][2] and [style guide][3].
+fwknop::access { 'alice':
+  source                    => 'ANY',
+  gpg_remote_id             => '7234ABCD',
+  gpg_decrypt_id            => 'EBCD1234',
+  gpg_allow_no_pw           => true,
+  require_source_address    => true,
+  require_username          => 'alice',
+  fw_access_timeout_seconds => 30,
+  hmac_key_base64           => Sensitive('STQ9m03hxj+WXwOpxMuNHQkTAx/EtfAKaXQ3tK8+Azcy2zZpimzRzo4+I53cNZvPJaMBfXjZ9NsB98iOpHY7Tg=='),
+}
 
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the
-root of your module directory and list out each of your module's classes,
-defined types, facts, functions, Puppet tasks, task plans, and resource types
-and providers, along with the parameters for each.
-
-For each element (class, defined type, function, and so on), list:
-
-* The data type, if applicable.
-* A description of what the element does.
-* Valid values, if the data type doesn't make it obvious.
-* Default value, if any.
-
-For example:
-
-```
-### `pet::cat`
-
-#### Parameters
-
-##### `meow`
-
-Enables vocalization in your cat. Valid options: 'string'.
-
-Default: 'medium-loud'.
+fwknop::access { 'john':
+  source                    => '3.3.3.0/24, 4.4.0.0/16',
+  open_ports                => 'tcp/80',
+  require_username          => 'john',
+  require_source_address    => true,
+  fw_access_timeout_seconds => 300,
+  key_base64                => Sensitive('bOx25a5kjXf8/TmNQO1IRD3s/E9iLoPaqUbOv8X4VBA='),
+  hmac_key_base64           => Sensitive('i0mIhR//1146/T+IMxDVZm1gosNVatvpqpCfkv4X6Xzv4E3SHR6AivCCWk/K/uLDpymyJr95KdEkagfGU4o5yw=='),
+}
 ```
 
 ## Limitations
 
-In the Limitations section, list any incompatibilities, known issues, or other
-warnings.
-
-## Development
-
-In the Development section, tell other users the ground rules for contributing
-to your project and how they should submit their work.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel are
-necessary or important to include here. Please use the `##` header.
-
-[1]: https://puppet.com/docs/pdk/latest/pdk_generating_modules.html
-[2]: https://puppet.com/docs/puppet/latest/puppet_strings.html
-[3]: https://puppet.com/docs/puppet/latest/puppet_strings_style.html
-
-## Things I have done so far
-
-```
-# install pdk
-pdk new module fwknop
-cd fwknop
-pdk new class fwknop
-# create github repo
-git clone mlibrary/puppet-fwknop.git
-# check license stuff
-git add .
-git commit
-git push
-# change main branch to production
-
-vi Dockerfile
-mkdir -p .github/workflows
-vi .github/workflows/ci.yml
-git add .
-git commit
-git push
-
-vi .github/dependabot.yml
-git add .
-git commit
-git push
-```
+Currently only compatible with latest ubuntu and debian.

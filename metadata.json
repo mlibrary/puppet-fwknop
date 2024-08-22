@@ -1,6 +1,6 @@
 {
   "name": "mlibrary-fwknop",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Regents of the University of Michigan",
   "summary": "Install and configure fwknop-server",
   "license": "BSD-3-Clause",
