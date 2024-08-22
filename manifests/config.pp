@@ -9,7 +9,15 @@
 # @example
 #   include fwknop::config
 class fwknop::config {
-  $pcap_intf = $facts['networking']['primary']
+  $pcap_intf = $fwknop::pcap_intf ? {
+    undef   => $facts['networking']['primary'],
+    default => $fwknop::pcap_intf,
+  }
+
+  $pcap_filter = $fwknop::pcap_filter ? {
+    Sensitive => $fwknop::pcap_filter.unwrap,
+    default   => $fwknop::pcap_filter,
+  }
 
   file { '/etc/fwknop':
     ensure => 'directory',

@@ -65,8 +65,8 @@ FORWARD_ALL                 <%= @forward_all ? "Y" : "N" %>
 DISABLE_DNAT                <%= @disable_dnat ? "Y" : "N" %>
 <% end %><% unless @gpg_decrypt_id.nil? -%>
 GPG_DECRYPT_ID              <%= @gpg_decrypt_id %>
-<% end %><% unless @plain_gpg_decrypt_password.nil? -%>
-GPG_DECRYPT_PASSWORD        <%= @plain_gpg_decrypt_password %>
+<% end %><% unless @plain_gpg_decrypt_pw.nil? -%>
+GPG_DECRYPT_PW              <%= @plain_gpg_decrypt_pw %>
 <% end %><% unless @gpg_allow_no_pw.nil? -%>
 GPG_ALLOW_NO_PW             <%= @gpg_allow_no_pw ? "Y" : "N" %>
 <% end %><% unless @gpg_require_sig.nil? -%>

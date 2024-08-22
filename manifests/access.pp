@@ -41,7 +41,7 @@
 # @param forward_all Later
 # @param disable_dnat Later
 # @param gpg_decrypt_id Later
-# @param gpg_decrypt_password Later
+# @param gpg_decrypt_pw Later
 # @param gpg_allow_no_pw Later
 # @param gpg_require_sig Later
 # @param gpg_disable_sig Later
@@ -85,7 +85,7 @@ define fwknop::access (
   Optional[Boolean] $forward_all = undef,
   Optional[Boolean] $disable_dnat = undef,
   Optional[String] $gpg_decrypt_id = undef,
-  Optional[Variant[String, Sensitive[String]]] $gpg_decrypt_password = undef,
+  Optional[Variant[String, Sensitive[String]]] $gpg_decrypt_pw = undef,
   Optional[Boolean] $gpg_allow_no_pw = undef,
   Optional[Boolean] $gpg_require_sig = undef,
   Optional[Boolean] $gpg_disable_sig = undef,
@@ -106,8 +106,8 @@ define fwknop::access (
     fail('Must set one (and only one) of: key, key_base64, or gpg_decrypt_id')
   }
 
-  if $gpg_decrypt_id != undef and $gpg_allow_no_pw != true and $gpg_decrypt_password == undef {
-    fail('gpg_decrypt_password is required for gpg-based authentication')
+  if $gpg_decrypt_id != undef and $gpg_allow_no_pw != true and $gpg_decrypt_pw == undef {
+    fail('gpg_decrypt_pw is required for gpg-based authentication')
   }
 
   $plain_key = $key ? {
@@ -130,9 +130,9 @@ define fwknop::access (
     default   => $hmac_key_base64,
   }
 
-  $plain_gpg_decrypt_password = $gpg_decrypt_password ? {
-    Sensitive => $gpg_decrypt_password.unwrap,
-    default   => $gpg_decrypt_password,
+  $plain_gpg_decrypt_pw = $gpg_decrypt_pw ? {
+    Sensitive => $gpg_decrypt_pw.unwrap,
+    default   => $gpg_decrypt_pw,
   }
 
   concat::fragment { "fwknop access ${title}":

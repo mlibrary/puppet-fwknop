@@ -89,7 +89,7 @@ describe 'fwknop::access' do
         end
 
         context 'with gpg_decrypt_id set' do
-          let(:params) { { gpg_decrypt_id: 'abcd1234', gpg_decrypt_password: 'efgh5678' } }
+          let(:params) { { gpg_decrypt_id: 'abcd1234', gpg_decrypt_pw: 'efgh5678' } }
 
           it { is_expected.to compile }
           it { is_expected.to add_access_config.with_target('/etc/fwknop/access.conf') }
@@ -102,7 +102,7 @@ describe 'fwknop::access' do
                 # testing required fields
                 SOURCE                      ANY
                 GPG_DECRYPT_ID              abcd1234
-                GPG_DECRYPT_PASSWORD        efgh5678
+                GPG_DECRYPT_PW              efgh5678
               ACCESS
             )
           end
@@ -846,8 +846,8 @@ describe 'fwknop::access' do
 
           it { is_expected.not_to compile }
 
-          context 'with gpg_decrypt_password set to r6k9sctpq7sftt37pp6urer6g8' do
-            let(:params) { super().merge(gpg_decrypt_password: 'r6k9sctpq7sftt37pp6urer6g8') }
+          context 'with gpg_decrypt_pw set to r6k9sctpq7sftt37pp6urer6g8' do
+            let(:params) { super().merge(gpg_decrypt_pw: 'r6k9sctpq7sftt37pp6urer6g8') }
 
             it { is_expected.to compile }
 
@@ -858,14 +858,14 @@ describe 'fwknop::access' do
                   # checking each parameter
                   SOURCE                      ANY
                   GPG_DECRYPT_ID              bcd35d73e538b5b5a53bee711b567de9c5eaa20b
-                  GPG_DECRYPT_PASSWORD        r6k9sctpq7sftt37pp6urer6g8
+                  GPG_DECRYPT_PW              r6k9sctpq7sftt37pp6urer6g8
                 ACCESS
               )
             end
           end
 
-          context 'with gpg_decrypt_password set to sensitive(n1ots9rgrbmmeuzewditpbw7xo)' do
-            let(:params) { super().merge(gpg_decrypt_password: sensitive('n1ots9rgrbmmeuzewditpbw7xo')) }
+          context 'with gpg_decrypt_pw set to sensitive(n1ots9rgrbmmeuzewditpbw7xo)' do
+            let(:params) { super().merge(gpg_decrypt_pw: sensitive('n1ots9rgrbmmeuzewditpbw7xo')) }
 
             it { is_expected.to compile }
 
@@ -876,7 +876,7 @@ describe 'fwknop::access' do
                   # checking each parameter
                   SOURCE                      ANY
                   GPG_DECRYPT_ID              bcd35d73e538b5b5a53bee711b567de9c5eaa20b
-                  GPG_DECRYPT_PASSWORD        n1ots9rgrbmmeuzewditpbw7xo
+                  GPG_DECRYPT_PW              n1ots9rgrbmmeuzewditpbw7xo
                 ACCESS
               )
             end
@@ -887,8 +887,8 @@ describe 'fwknop::access' do
 
             it { is_expected.not_to compile }
 
-            context 'with gpg_decrypt_password set to anscxk7aeu8ystoz1gtuere7zh' do
-              let(:params) { super().merge(gpg_decrypt_password: 'anscxk7aeu8ystoz1gtuere7zh') }
+            context 'with gpg_decrypt_pw set to anscxk7aeu8ystoz1gtuere7zh' do
+              let(:params) { super().merge(gpg_decrypt_pw: 'anscxk7aeu8ystoz1gtuere7zh') }
 
               it { is_expected.to compile }
 
@@ -899,7 +899,7 @@ describe 'fwknop::access' do
                     # checking each parameter
                     SOURCE                      ANY
                     GPG_DECRYPT_ID              bcd35d73e538b5b5a53bee711b567de9c5eaa20b
-                    GPG_DECRYPT_PASSWORD        anscxk7aeu8ystoz1gtuere7zh
+                    GPG_DECRYPT_PW              anscxk7aeu8ystoz1gtuere7zh
                     GPG_ALLOW_NO_PW             N
                   ACCESS
                 )

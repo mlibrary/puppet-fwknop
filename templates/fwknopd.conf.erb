@@ -1,2 +1,69 @@
 # Managed by puppet.
-PCAP_INTF <%= @pcap_intf %>
+PCAP_INTF                 <%= @pcap_intf %>;
+<% unless scope['fwknop::enable_pcap_promisc'].nil? -%>
+ENABLE_PCAP_PROMISC       <%= scope['fwknop::enable_pcap_promisc'] ? "Y" : "N" %>;
+<% end %><% unless @pcap_filter.nil? -%>
+PCAP_FILTER               <%= @pcap_filter %>;
+<% end %><% unless scope['fwknop::enable_spa_packet_aging'].nil? -%>
+ENABLE_SPA_PACKET_AGING   <%= scope['fwknop::enable_spa_packet_aging'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::max_spa_packet_age_seconds'].nil? -%>
+MAX_SPA_PACKET_AGE        <%= scope['fwknop::max_spa_packet_age_seconds'] %>;
+<% end %><% unless scope['fwknop::enable_digest_persistence'].nil? -%>
+ENABLE_DIGEST_PERSISTENCE <%= scope['fwknop::enable_digest_persistence'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::rules_check_threshold'].nil? -%>
+RULES_CHECK_THRESHOLD     <%= scope['fwknop::rules_check_threshold'] %>;
+<% end %><% unless scope['fwknop::enable_ipt_forwarding'].nil? -%>
+ENABLE_IPT_FORWARDING     <%= scope['fwknop::enable_ipt_forwarding'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::enable_ipt_local_nat'].nil? -%>
+ENABLE_IPT_LOCAL_NAT      <%= scope['fwknop::enable_ipt_local_nat'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::enable_ipt_snat'].nil? -%>
+ENABLE_IPT_SNAT           <%= scope['fwknop::enable_ipt_snat'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::snat_translate_ip'].nil? -%>
+SNAT_TRANSLATE_IP         <%= scope['fwknop::snat_translate_ip'] %>;
+<% end %><% unless scope['fwknop::enable_ipt_output'].nil? -%>
+ENABLE_IPT_OUTPUT         <%= scope['fwknop::enable_ipt_output'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::max_sniff_bytes'].nil? -%>
+MAX_SNIFF_BYTES           <%= scope['fwknop::max_sniff_bytes'] %>;
+<% end %><% unless scope['fwknop::flush_ipt_at_init'].nil? -%>
+FLUSH_IPT_AT_INIT         <%= scope['fwknop::flush_ipt_at_init'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::flush_ipt_at_exit'].nil? -%>
+FLUSH_IPT_AT_EXIT         <%= scope['fwknop::flush_ipt_at_exit'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::exit_at_intf_down'].nil? -%>
+EXIT_AT_INTF_DOWN         <%= scope['fwknop::exit_at_intf_down'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::enable_rule_prepend'].nil? -%>
+ENABLE_RULE_PREPEND       <%= scope['fwknop::enable_rule_prepend'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::enable_nat_dns'].nil? -%>
+ENABLE_NAT_DNS            <%= scope['fwknop::enable_nat_dns'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::gpg_home_dir'].nil? -%>
+GPG_HOME_DIR              <%= scope['fwknop::gpg_home_dir'] %>;
+<% end %><% unless scope['fwknop::gpg_exe'].nil? -%>
+GPG_EXE                   <%= scope['fwknop::gpg_exe'] %>;
+<% end %><% unless scope['fwknop::locale'].nil? -%>
+LOCALE                    <%= scope['fwknop::locale'] %>;
+<% end %><% unless scope['fwknop::enable_spa_over_http'].nil? -%>
+ENABLE_SPA_OVER_HTTP      <%= scope['fwknop::enable_spa_over_http'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::enable_x_forwarded_for'].nil? -%>
+ENABLE_X_FORWARDED_FOR    <%= scope['fwknop::enable_x_forwarded_for'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::enable_tcp_server'].nil? -%>
+ENABLE_TCP_SERVER         <%= scope['fwknop::enable_tcp_server'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::tcpserv_port'].nil? -%>
+TCPSERV_PORT              <%= scope['fwknop::tcpserv_port'] %>;
+<% end %><% unless scope['fwknop::enable_udp_server'].nil? -%>
+ENABLE_UDP_SERVER         <%= scope['fwknop::enable_udp_server'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::udpserv_port'].nil? -%>
+UDPSERV_PORT              <%= scope['fwknop::udpserv_port'] %>;
+<% end %><% unless scope['fwknop::pcap_dispatch_count'].nil? -%>
+PCAP_DISPATCH_COUNT       <%= scope['fwknop::pcap_dispatch_count'] %>;
+<% end %><% unless scope['fwknop::pcap_loop_sleep_microseconds'].nil? -%>
+PCAP_LOOP_SLEEP           <%= scope['fwknop::pcap_loop_sleep_microseconds'] %>;
+<% end %><% unless scope['fwknop::enable_pcap_any_direction'].nil? -%>
+ENABLE_PCAP_ANY_DIRECTION <%= scope['fwknop::enable_pcap_any_direction'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::syslog_identity'].nil? -%>
+SYSLOG_IDENTITY           <%= scope['fwknop::syslog_identity'] %>;
+<% end %><% unless scope['fwknop::syslog_facility'].nil? -%>
+SYSLOG_FACILITY           <%= scope['fwknop::syslog_facility'] %>;
+<% end %><% unless scope['fwknop::enable_destination_rule'].nil? -%>
+ENABLE_DESTINATION_RULE   <%= scope['fwknop::enable_destination_rule'] ? "Y" : "N" %>;
+<% end %><% unless scope['fwknop::fwknop_run_dir'].nil? -%>
+FWKNOP_RUN_DIR            <%= scope['fwknop::fwknop_run_dir'] %>;
+<% end -%>
