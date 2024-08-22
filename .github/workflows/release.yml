@@ -1,7 +1,6 @@
 name: "Release to Puppet Forge"
 
-on:
-  workflow_call:
+on: "workflow_dispatch"
 
 jobs:
   test:
