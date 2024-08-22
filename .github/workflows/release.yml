@@ -4,20 +4,7 @@ on: "workflow_dispatch"
 
 jobs:
   test:
-    runs-on: "ubuntu-latest"
-    strategy:
-      matrix:
-        task:
-        - "spec"
-        - "lint"
-        - "metadata_lint"
-        - "syntax"
-        - "rubocop"
-    steps:
-    - uses: "actions/checkout@v4"
-    - name: "rake ${{ matrix.task }}"
-      run: |
-        docker run --rm `docker build -q .` rake ${{ matrix.task }}
+    uses: "./.github/workflows/ci.yml"
 
   release:
     runs-on: "ubuntu-latest"
@@ -42,6 +29,8 @@ jobs:
     - name: "gh release create"
       run: |
         gh release create v${{ steps.get_version.outputs.version }} --title v${{ steps.get_version.outputs.version }} -F OUTPUT.md
+      env:
+        GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     - name: "pdk publish"
       uses: "docker://puppet/pdk:3.0.0.0"
       with:
