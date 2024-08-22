@@ -1,7 +1,5 @@
 # fwknop
 
-`TODO` before v1: write all the reference documentation.
-
 ## Table of Contents
 
 1. [Description](#description)
