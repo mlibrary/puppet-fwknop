@@ -42,6 +42,7 @@
 # @param syslog_facility Later
 # @param enable_destination_rule Later
 # @param fwknop_run_dir Later
+# @param verbose Later
 class fwknop (
   Optional[String] $pcap_intf = undef,
   Optional[Boolean] $enable_pcap_promisc = undef,
@@ -77,6 +78,7 @@ class fwknop (
   Optional[String] $syslog_facility = undef,
   Optional[Boolean] $enable_destination_rule = undef,
   Optional[String] $fwknop_run_dir = undef,
+  Optional[Integer] $verbose = undef,
 ) {
   contain fwknop::install
   contain fwknop::config

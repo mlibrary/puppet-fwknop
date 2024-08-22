@@ -890,6 +890,22 @@ describe 'fwknop' do
           )
         end
       end
+
+      context 'with verbose set to 1' do
+        let(:params) { { verbose: 1 } }
+
+        it { is_expected.to compile.with_all_deps }
+
+        it do
+          is_expected.to contain_file('/etc/fwknop/fwknopd.conf').with_content(
+            <<~FWKNOPD
+              # Managed by puppet.
+              VERBOSE                   1;
+              PCAP_INTF                 #{facts[:networking]['primary']};
+            FWKNOPD
+          )
+        end
+      end
     end
   end
 end

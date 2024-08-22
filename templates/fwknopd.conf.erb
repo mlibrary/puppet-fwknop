@@ -1,4 +1,7 @@
 # Managed by puppet.
+<% unless scope['fwknop::verbose'].nil? -%>
+VERBOSE                   <%= scope['fwknop::verbose'] %>;
+<% end -%>
 PCAP_INTF                 <%= @pcap_intf %>;
 <% unless scope['fwknop::enable_pcap_promisc'].nil? -%>
 ENABLE_PCAP_PROMISC       <%= scope['fwknop::enable_pcap_promisc'] ? "Y" : "N" %>;
