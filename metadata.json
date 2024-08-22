@@ -1,10 +1,10 @@
 {
   "name": "mlibrary-fwknop",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Regents of the University of Michigan",
-  "summary": "",
+  "summary": "Install and configure fwknop-server",
   "license": "BSD-3-Clause",
-  "source": "",
+  "source": "https://github.com/mlibrary/puppet-fwknop",
   "dependencies": [
     { "name": "puppetlabs/concat", "version_requirement": ">= 9.0.2 < 10.0.0" },
     { "name": "puppetlabs/stdlib", "version_requirement": ">= 9.0.0 < 10.0.0" }
