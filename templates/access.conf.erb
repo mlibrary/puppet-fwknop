@@ -1,0 +1,86 @@
+
+# <%= @title %>
+SOURCE                      <%= @source %>
+<% unless @destination.nil? -%>
+DESTINATION                 <%= @destination %>
+<% end %><% unless @open_ports.nil? -%>
+OPEN_PORTS                  <%= @open_ports %>
+<% end %><% unless @restrict_ports.nil? -%>
+RESTRICT_PORTS              <%= @restrict_ports %>
+<% end %><% unless @plain_key.nil? -%>
+KEY                         <%= @plain_key %>
+<% end %><% unless @plain_key_base64.nil? -%>
+KEY_BASE64                  <%= @plain_key_base64 %>
+<% end %><% unless @plain_hmac_key.nil? -%>
+HMAC_KEY                    <%= @plain_hmac_key %>
+<% end %><% unless @plain_hmac_key_base64.nil? -%>
+HMAC_KEY_BASE64             <%= @plain_hmac_key_base64 %>
+<% end %><% unless @fw_access_timeout_seconds.nil? -%>
+FW_ACCESS_TIMEOUT           <%= @fw_access_timeout_seconds %>
+<% end %><% unless @include.nil? -%>
+%include                    <%= @include %>
+<% end %><% unless @include_folder.nil? -%>
+%include_folder             <%= @include_folder %>
+<% end %><% unless @encryption_mode.nil? -%>
+ENCRYPTION_MODE             <%= @encryption_mode %>
+<% end %><% unless @hmac_digest_type.nil? -%>
+HMAC_DIGEST_TYPE            <%= @hmac_digest_type %>
+<% end %><% unless @access_expire.nil? -%>
+ACCESS_EXPIRE               <%= @access_expire %>
+<% end %><% unless @access_expire_epoch.nil? -%>
+ACCESS_EXPIRE_EPOCH         <%= @access_expire_epoch %>
+<% end %><% unless @enable_cmd_exec.nil? -%>
+ENABLE_CMD_EXEC             <%= @enable_cmd_exec ? "Y" : "N" %>
+<% end %><% unless @enable_cmd_sudo_exec.nil? -%>
+ENABLE_CMD_SUDO_EXEC        <%= @enable_cmd_sudo_exec ? "Y" : "N" %>
+<% end %><% unless @cmd_exec_user.nil? -%>
+CMD_EXEC_USER               <%= @cmd_exec_user %>
+<% end %><% unless @cmd_sudo_exec_user.nil? -%>
+CMD_SUDO_EXEC_USER          <%= @cmd_sudo_exec_user %>
+<% end %><% unless @cmd_exec_group.nil? -%>
+CMD_EXEC_GROUP              <%= @cmd_exec_group %>
+<% end %><% unless @cmd_sudo_exec_group.nil? -%>
+CMD_SUDO_EXEC_GROUP         <%= @cmd_sudo_exec_group %>
+<% end %><% unless @cmd_cycle_open.nil? -%>
+CMD_CYCLE_OPEN              <%= @cmd_cycle_open %>
+<% end %><% unless @cmd_cycle_close.nil? -%>
+CMD_CYCLE_CLOSE             <%= @cmd_cycle_close %>
+<% end %><% unless @cmd_cycle_timer_seconds.nil? -%>
+CMD_CYCLE_TIMER             <%= @cmd_cycle_timer_seconds %>
+<% end %><% unless @sudo_exe.nil? -%>
+SUDO_EXE                    <%= @sudo_exe %>
+<% end %><% unless @require_username.nil? -%>
+REQUIRE_USERNAME            <%= @require_username %>
+<% end %><% unless @require_source_address.nil? -%>
+REQUIRE_SOURCE_ADDRESS      <%= @require_source_address ? "Y" : "N" %>
+<% end %><% unless @force_nat.nil? -%>
+FORCE_NAT                   <%= @force_nat %>
+<% end %><% unless @force_snat.nil? -%>
+FORCE_SNAT                  <%= @force_snat %>
+<% end %><% unless @force_masquerade.nil? -%>
+FORCE_MASQUERADE            <%= @force_masquerade ? "Y" : "N" %>
+<% end %><% unless @forward_all.nil? -%>
+FORWARD_ALL                 <%= @forward_all ? "Y" : "N" %>
+<% end %><% unless @disable_dnat.nil? -%>
+DISABLE_DNAT                <%= @disable_dnat ? "Y" : "N" %>
+<% end %><% unless @gpg_decrypt_id.nil? -%>
+GPG_DECRYPT_ID              <%= @gpg_decrypt_id %>
+<% end %><% unless @plain_gpg_decrypt_password.nil? -%>
+GPG_DECRYPT_PASSWORD        <%= @plain_gpg_decrypt_password %>
+<% end %><% unless @gpg_allow_no_pw.nil? -%>
+GPG_ALLOW_NO_PW             <%= @gpg_allow_no_pw ? "Y" : "N" %>
+<% end %><% unless @gpg_require_sig.nil? -%>
+GPG_REQUIRE_SIG             <%= @gpg_require_sig ? "Y" : "N" %>
+<% end %><% unless @gpg_disable_sig.nil? -%>
+GPG_DISABLE_SIG             <%= @gpg_disable_sig ? "Y" : "N" %>
+<% end %><% unless @gpg_ignore_sig_verify_error.nil? -%>
+GPG_IGNORE_SIG_VERIFY_ERROR <%= @gpg_ignore_sig_verify_error ? "Y" : "N" %>
+<% end %><% unless @gpg_remote_id.nil? -%>
+GPG_REMOTE_ID               <%= @gpg_remote_id %>
+<% end %><% unless @gpg_fingerprint_id.nil? -%>
+GPG_FINGERPRINT_ID          <%= @gpg_fingerprint_id %>
+<% end %><% unless @gpg_home_dir.nil? -%>
+GPG_HOME_DIR                <%= @gpg_home_dir %>
+<% end %><% unless @gpg_exe.nil? -%>
+GPG_EXE                     <%= @gpg_exe %>
+<% end -%>
