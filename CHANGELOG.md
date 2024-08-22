@@ -8,7 +8,7 @@ to [Semantic Versioning][2].
 [1]: https://keepachangelog.com/en/1.1.0/
 [2]: https://semver.org/spec/v2.0.0.html
 
-## [Unreleased]
+## [Unreleased](https://github.com/mlibrary/puppet-fwknop)
 
 ### Added
 
@@ -22,7 +22,7 @@ to [Semantic Versioning][2].
 
 ### Security
 
-## [0.1.0] - 2024-08-22
+## [0.1.0](https://github.com/mlibrary/puppet-fwknop/tree/v0.1.0) - 2024-08-22
 
 ### Added
 
