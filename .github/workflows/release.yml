@@ -1,8 +1,7 @@
 name: "Release to Puppet Forge"
 
 on:
-  push:
-    tags: ["v[0-9]+[.][0-9]+[.][0-9]+"]
+  workflow_call:
 
 jobs:
   test:
@@ -27,10 +26,24 @@ jobs:
     secrets: "inherit"
     steps:
     - uses: "actions/checkout@v4"
+    - name: "get version"
+      id: "get_version"
+      run: |
+        echo "version=`jq --raw-output .version metadata.json`" >> $GITHUB_OUTPUT
     - name: "pdk build"
       uses: "docker://puppet/pdk:3.0.0.0"
       with:
         args: "build"
+    - name: "gh changelog get --latest"
+      run: |
+        export GH_HOST=github.com
+        gh extension install chelnak/gh-changelog
+        gh changelog get --latest > OUTPUT.md
+      env:
+        GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - name: "gh release create"
+      run: |
+        gh release create v${{ steps.get_version.outputs.version }} --title v${{ steps.get_version.outputs.version }} -F OUTPUT.md
     - name: "pdk publish"
       uses: "docker://puppet/pdk:3.0.0.0"
       with:
