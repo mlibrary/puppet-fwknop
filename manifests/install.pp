@@ -2,13 +2,11 @@
 # All Rights Reserved. Licensed according to the terms of the Revised
 # BSD License. See LICENSE.txt for details.
 
-# @summary A short summary of the purpose of this class
+# @summary
+#   This class manages the package resource for fwknop-server.
 #
-# A description of what this class does
+# @api private
 #
-# @example
-#   include fwknop::install
 class fwknop::install {
-  package { 'fwknop-server':
-  }
+  package { 'fwknop-server': }
 }

@@ -2,12 +2,12 @@
 # All Rights Reserved. Licensed according to the terms of the Revised
 # BSD License. See LICENSE.txt for details.
 
-# @summary A short summary of the purpose of this class
+# @summary
+#   This class manages fwknopd.conf and the concat resource for
+#   access.conf.
 #
-# A description of what this class does
+# @api private
 #
-# @example
-#   include fwknop::config
 class fwknop::config {
   $pcap_intf = $fwknop::pcap_intf ? {
     undef   => $facts['networking']['primary'],
