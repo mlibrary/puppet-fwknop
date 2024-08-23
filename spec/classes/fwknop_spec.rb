@@ -44,6 +44,20 @@ describe 'fwknop' do
         it { is_expected.to contain_concat__fragment('000 fwknop access header').with_content("# Managed by puppet.\n") }
       end
 
+      context 'with package_manage set to false' do
+        let(:params) { { package_manage: false } }
+
+        it { is_expected.to compile.with_all_deps }
+        it { is_expected.not_to contain_package('fwknop-server') }
+      end
+
+      context 'with service_manage set to false' do
+        let(:params) { { service_manage: false } }
+
+        it { is_expected.to compile.with_all_deps }
+        it { is_expected.not_to contain_service('fwknop-server') }
+      end
+
       context 'with pcap_intf set to eth5' do
         let(:params) { { pcap_intf: 'eth5' } }
 

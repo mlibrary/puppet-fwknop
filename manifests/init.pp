@@ -212,6 +212,12 @@
 #   value of 0 is the default verbosity level. Setting it up to 1 or
 #   higher will allow debugging messages to be displayed.
 #
+# @param package_manage
+#   Whether to manage the fwknop-server package. Default true.
+#
+# @param service_manage
+#   Whether to manage the fwknop-server service. Default true.
+#
 class fwknop (
   Optional[String] $pcap_intf = undef,
   Optional[Boolean] $enable_pcap_promisc = undef,
@@ -248,6 +254,8 @@ class fwknop (
   Optional[Boolean] $enable_destination_rule = undef,
   Optional[String] $fwknop_run_dir = undef,
   Optional[Integer] $verbose = undef,
+  Boolean $package_manage = true,
+  Boolean $service_manage = true,
 ) {
   contain fwknop::install
   contain fwknop::config

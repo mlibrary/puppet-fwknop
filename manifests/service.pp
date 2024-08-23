@@ -8,5 +8,7 @@
 # @api private
 #
 class fwknop::service {
-  service { 'fwknop-server': }
+  if $fwknop::service_manage {
+    service { 'fwknop-server': }
+  }
 }

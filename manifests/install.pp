@@ -8,5 +8,7 @@
 # @api private
 #
 class fwknop::install {
-  package { 'fwknop-server': }
+  if $fwknop::package_manage {
+    package { 'fwknop-server': }
+  }
 }
