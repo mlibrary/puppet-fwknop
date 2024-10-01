@@ -9,6 +9,9 @@
 #
 class fwknop::service {
   if $fwknop::service_manage {
-    service { 'fwknop-server': }
+    service { 'fwknop-server':
+      ensure => 'running',
+      enable => true,
+    }
   }
 }
