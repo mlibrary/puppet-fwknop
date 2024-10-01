@@ -19,7 +19,8 @@ describe 'fwknop' do
         it { is_expected.to contain_class('Fwknop::Config').that_notifies('Class[Fwknop::Service]') }
 
         it { is_expected.to contain_package('fwknop-server') }
-        it { is_expected.to contain_service('fwknop-server') }
+        it { is_expected.to contain_service('fwknop-server').with_ensure('running') }
+        it { is_expected.to contain_service('fwknop-server').with_enable(true) }
 
         it { is_expected.to contain_file('/etc/fwknop').with_ensure('directory') }
 
