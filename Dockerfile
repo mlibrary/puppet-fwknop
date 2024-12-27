@@ -1,4 +1,4 @@
-FROM ruby:3.3
+FROM ruby:3.4
 RUN gem install bundler && mkdir -p /usr/src/app
 COPY Gemfile* /usr/src/app
 WORKDIR /usr/src/app
